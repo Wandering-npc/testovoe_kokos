@@ -10,5 +10,31 @@
 
 ## Установка
 
-1. Клонируйте репозиторий: `
+1. Клонируйте репозиторий:
+```bash
+git clone git@github.com:Wandering-npc/testovoe_kokos.git
+```
+2. Переходим в директорию с проектом, и выполняем поочередно команды для установки зависимостей, проведения миграций и создания суперюзера. 
+```bash
+pip install -r requirements.txt
+python manage.py makemigrations
+python manage.py migrate
+python manage.py createsuperuser
+```
+3. Запускаем проект
+```bash
+python manage.py runserver
+```
+## Использование
+
+- Чтобы получить курсы обмена валют на определенную дату, сделайте запрос к адресу `/rate/` с параметрами `charcode` (код валюты) и `date` (в формате YYYY-MM-DD).
+  Пример: `http://localhost:8000/rate/?charcode=AUD&date=2024-02-14`
+
+- Для управления данными о валютах используйте интерфейс администратора Django, доступный по адресу `http://localhost:8000/admin/`
+
+## Автоматическое обновление курсов валют
+
+- Приложение автоматически обновляет курсы валют из API ЦБР ежедневно.
+- Для обеспечения автоматического обновления настройте cron-задачу для выполнения управляющей команды `update_currency` ежедневно. 
+  Пример: `0 0 * * * /path/to/your/venv/bin/python /path/to/your/django/project/manage.py update_currency_rates`
 
