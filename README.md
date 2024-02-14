@@ -35,6 +35,7 @@ python manage.py runserver
 ## Автоматическое обновление курсов валют
 
 - Приложение автоматически обновляет курсы валют из API ЦБР ежедневно.
-- Для обеспечения автоматического обновления настройте cron-задачу для выполнения управляющей команды `update_currency` ежедневно. 
-  Пример: `0 0 * * * /path/to/your/venv/bin/python /path/to/your/django/project/manage.py update_currency_rates`
+- Для обеспечения автоматического обновления настройте cron-задачу для выполнения менеджмент команды `update_currency` ежедневно. 
+  Пример: 
+`0 5 * * * /path/to/your/venv/bin/python /path/to/your/django/project/manage.py update_currency_rates`
 
